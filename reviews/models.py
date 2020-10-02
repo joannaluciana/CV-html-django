@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
-from django.core.validators import MinValueValidator, MaxLengthValidator
-
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils.timezone import now
 from works.models import Project
 
 
@@ -23,8 +23,6 @@ class Reviews(models.Model):
         help_text='',
     )
     content = models.TextField(
-        max_length=300,
-        null=False,
         blank=False,
         verbose_name='Content',
         help_text='',
@@ -57,8 +55,8 @@ class Reviews(models.Model):
         verbose_name='grade',
         help_text='Validate project from 1 - 10',
         validators=[
-            MinValueValidator(0),
-            MaxLengthValidator(11),
+            MinValueValidator(1),
+            MaxValueValidator(11),
         ],
     )
 
@@ -79,8 +77,8 @@ class Grade(models.Model):
         verbose_name='grade',
         help_text='Validate project from 1 - 10',
         validators=[
-            MinValueValidator(0),
-            MaxLengthValidator(11),
+            MinValueValidator(1),
+            MaxValueValidator(11),
         ],
     )
     project = models.ForeignKey(

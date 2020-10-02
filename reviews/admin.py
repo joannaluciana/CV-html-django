@@ -15,8 +15,5 @@ class ReviewsAdmin(admin.ModelAdmin):
         )
 
 
-
-
-
 admin.site.register(Reviews, ReviewsAdmin)
 
