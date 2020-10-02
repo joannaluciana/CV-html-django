@@ -10,14 +10,12 @@ class Project (models.Model):
         null=False,
         blank=False,
         verbose_name='Project name',
-        help_text='Name of project'
+        help_text='Name of project',
     )
-    description = models.CharField(
-        max_length=250,
-        null=False,
+    description = models.TextField(
         blank=False,
         verbose_name='Project descripton',
-        help_text='Name of project'
+        help_text='Name of project',
     )
     date_of_create = models.DateField(
         null=True,
@@ -33,12 +31,15 @@ class Project (models.Model):
         help_text=''
     )
 
-    categories = models.ManyToManyField(
+    categories = models.ForeignKey(
         "Category",
+        on_delete=models.CASCADE,
+        null=False,
         blank=False,
         verbose_name="Categories",
         help_text='',
     )
+
     portfolio = models.ImageField(
         blank=True,
         null=False,
@@ -51,6 +52,8 @@ class Project (models.Model):
 class Category(models.Model) :
     name = models.CharField(
         max_length=50,
+        null=False,
+        blank=False,
         verbose_name='Category name',
         help_text='',
     )

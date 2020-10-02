@@ -64,7 +64,7 @@ class Reviews(models.Model):
 class Grade(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         null=False,
         blank=False,
         verbose_name='author',
