@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Project, Category
 
 
+
 class ProjectAdmin(admin.ModelAdmin):
     date_hierarchy = ('date_of_create')
     list_display = ('name', 'description', 'web_site',

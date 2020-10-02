@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Reviews, Grade
+from .models import Reviews
 
 
 class ReviewsAdmin(admin.ModelAdmin):
     date_hierarchy = ('pub_date')
-    list_display = ('title', 'content', 'state','grade')
+    list_display = ('title', 'content', 'state', 'grade')
     search_fields = ('title', 'pub_date')
 
     def krotki_opis(self, obj):
@@ -15,8 +15,5 @@ class ReviewsAdmin(admin.ModelAdmin):
         )
 
 
-
-
 admin.site.register(Reviews, ReviewsAdmin)
-
 
