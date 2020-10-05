@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.timezone import now
+
 from works.models import Project
 
 
@@ -12,8 +13,16 @@ class Reviews(models.Model):
         on_delete=models.CASCADE,
         null=False,
         blank=False,
+
         verbose_name='author',
         help_text='',
+    )
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+        verbose_name="project name",
+        help_text="",
     )
     title = models.CharField(
         max_length=100,
